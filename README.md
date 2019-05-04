@@ -1,6 +1,23 @@
 # ***Sing_Dance_Rap_Basketball***
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/Yulibao/Sing_Dance_Rap_Basketball/blob/master/LICENSE)
 
+## ***INSTALL***
+```{r, engine='bash', count_lines}
+#最好使用 venv 
+#方法一 直接用pycharm生成venv环境(推荐)
+#方法二 命令行手动生成并激活环境
+
+#配好解释器环境后项目根目录下依次执行命令:
+
+python -m pip install --upgrade pip
+
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
+pip install -r requirements.txt
+
+python ./init_env/init_env
+```
+
 ## ***Data structure algorithm***：
 > * Tokenize and lemmatize the text, and annotate  
 with pos tags.
@@ -20,7 +37,7 @@ of the text.
 
 ## ***Todos***:
 *  分词 判断词性
-   * ***直接调库，JieBa分词，挑出来动词和名词***
+   * ***直接调库Wordnet***
 * 建立一个 Semantic Network
    * ***图中各顶点的PageRank值随机初始化*** 
    * ***边的权重按照以下算法***  
