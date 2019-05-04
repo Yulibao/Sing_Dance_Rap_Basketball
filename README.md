@@ -23,9 +23,9 @@ of the text.
    * ***直接调库，JieBa分词，挑出来动词和名词***
 * 建立一个 Semantic Network
    * ***图中各顶点的PageRanke值随机初始化*** 
-   * ***边的权重按照以下算法***
-   ![](https://s2.ax1x.com/2019/05/04/EdCgZF.png)  
-   * ***其中一有两个个不理解的地方***  
+   * ***边的权重按照以下算法***  
+   ![](https://s2.ax1x.com/2019/05/04/EdiC11.png)  
+   * ***其中两个不理解的地方:***  
      ***论文里面的senses是啥玩意？***  
      ***Wordnet or Hownet具体怎么实现？***
      > * Let W1 has n senses S1i (i=1…n) and W2 has m  
@@ -35,6 +35,6 @@ of the text.
        which can be measured by Wordnet or Hownet.
 
 * 在上一步建立的数据结构上PageRank  
-  * 算法如下  
+  * ***算法如下***  
     ![](https://s2.ax1x.com/2019/05/04/EdC5xx.png)
-  * 循环计算，直至收敛 *//这里需要一个判定收敛的算法或者库*
+  * ***循环计算，直至收敛*** *//这里需要一个判定收敛的算法或者库*
