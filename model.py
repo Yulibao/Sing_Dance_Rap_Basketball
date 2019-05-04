@@ -50,7 +50,8 @@ class SemanticNetwork:
                 link = SemanticNetwork.get_semantic_link(self.node_word_map[i][0],self.node_word_map[j][0])
 
                 if link> self.link_threshold:
-                 self.g.add_weighted_edges_from([(i, j, link)])
+                    print(self.node_word_map[i][0],self.node_word_map[j][0], link)
+                    self.g.add_weighted_edges_from([(i, j, link)])
 
     @staticmethod
     def get_semantic_link(word1, word2):
@@ -68,6 +69,11 @@ class SemanticNetwork:
         return max_similarity
 
     def page_rank(self):
-        dic=networkx.pagerank(self.g,alpha=0.5)
-        result = sorted(dic.items(), key=lambda x: x[1], reverse=True)
-        return result[0:10]
+        dic = networkx.pagerank(self.g, alpha= 0.85)
+        tup = sorted(dic.items(), key=lambda x: x[1], reverse=True)
+        result = {}
+
+        for record in tup[1:11]:
+            result[self.node_word_map[record[0]][0]] = record[1]
+
+        return result
