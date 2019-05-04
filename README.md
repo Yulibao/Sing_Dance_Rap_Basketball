@@ -22,7 +22,7 @@ of the text.
 *  分词 判断词性
    * ***直接调库，JieBa分词，挑出来动词和名词***
 * 建立一个 Semantic Network
-   * ***图中各顶点的PageRanke值随机初始化*** 
+   * ***图中各顶点的PageRank值随机初始化*** 
    * ***边的权重按照以下算法***  
    ![](https://s2.ax1x.com/2019/05/04/EdiC11.png)  
    * ***~~其中两个不理解的地方:~~***  
@@ -34,7 +34,7 @@ of the text.
        by maximum similarity between their senses,  
        which can be measured by Wordnet or Hownet.
 
-    * ***[Wordnet[1]](https://zh.wikipedia.org/wiki/WordNet)***
+    * ***[Wordnet[1]](https://zhuanlan.zhihu.com/p/26461511)***
       ***[Wrodnet[2]](https://zhuanlan.zhihu.com/p/26527203)***
     * ***[Hownet](https://zhuanlan.zhihu.com/p/32688983)***  
     * ***[Wordnet、Hownet的比较](https://www.cnblogs.com/kaituorensheng/p/3569436.html)***
