@@ -1,2 +1,4 @@
+decorator==4.4.0
+networkx==2.3
 nltk==3.4.1
 six==1.12.0
