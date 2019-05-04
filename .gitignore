@@ -2,3 +2,4 @@
 .idea/
 Data/
 venv/
+__pycache__
