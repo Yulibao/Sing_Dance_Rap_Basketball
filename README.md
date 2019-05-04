@@ -25,14 +25,19 @@ of the text.
    * ***图中各顶点的PageRanke值随机初始化*** 
    * ***边的权重按照以下算法***  
    ![](https://s2.ax1x.com/2019/05/04/EdiC11.png)  
-   * ***其中两个不理解的地方:***  
-     ***论文里面的senses是啥玩意？***  
-     ***Wordnet or Hownet具体怎么实现？***
+   * ***~~其中两个不理解的地方:~~***  
+     ***~~论文里面的senses是啥玩意？~~***   
+     ***~~Wordnet or Hownet具体怎么实现？~~***
      > * Let W1 has n senses S1i (i=1…n) and W2 has m  
        senses S2j (j=1…m). Then semantic similarity between  
        W1 and W2 can be approximately computed  
        by maximum similarity between their senses,  
        which can be measured by Wordnet or Hownet.
+
+    * ***[Wordnet[1]](https://zh.wikipedia.org/wiki/WordNet)***
+      ***[Wrodnet[2]](https://zhuanlan.zhihu.com/p/26527203)***
+    * ***[Hownet](https://zhuanlan.zhihu.com/p/32688983)***  
+    * ***[Wordnet、Hownet的比较](https://www.cnblogs.com/kaituorensheng/p/3569436.html)***
 
 * 在上一步建立的数据结构上PageRank  
   * ***算法如下***  
