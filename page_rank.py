@@ -27,7 +27,7 @@ def pagerank(G, weight, alpha=0.85,
             # this matrix multiply looks odd because it is
             # doing a left multiply x^T=xlast^T*W
             for nbr in G[n]:
-                x[nbr] += (alpha * xlast[n] * G[n][nbr][weight])/out_degree_dic[n]
+                x[nbr] += (alpha * xlast[n] * G[n][nbr][weight]) / out_degree_dic[n]
             x[n] += (1.0 - alpha)
         # check convergence, l1 norm
         err = sum([abs(x[n] - xlast[n]) for n in x])
