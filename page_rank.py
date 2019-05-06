@@ -1,4 +1,5 @@
 import networkx as nx
+import random
 
 
 def pagerank(G, weight='weight', alpha=0.85,
@@ -13,7 +14,7 @@ def pagerank(G, weight='weight', alpha=0.85,
 
     # Choose fixed starting vector if not given
     if nstart is None:
-        x = dict.fromkeys(G, 1.0 / N)
+        x = dict.fromkeys(G, random.random())
     else:
         # Normalized nstart vector
         s = float(sum(nstart.values()))
