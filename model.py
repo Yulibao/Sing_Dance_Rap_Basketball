@@ -52,7 +52,7 @@ class SemanticNetwork:
 
     link_threshold = 0
 
-    def __init__(self, taged_words, link_threshold=0):
+    def __init__(self, taged_words, di = False, link_threshold=0):
         self.link_threshold = link_threshold
 
         i = 0
@@ -69,7 +69,10 @@ class SemanticNetwork:
                 link = SemanticNetwork.get_semantic_link(self.node_word_map[i][0], self.node_word_map[j][0])
 
                 if link > self.link_threshold:
-                    self.g.add_weighted_edges_from([(i, j, link)])
+                    if di:
+                        self.g.add_edges_from([(i, j, {'weight': link})])
+                    else:
+                        self.g.add_edges_from([(i, j, {'weight': link}), (j, i, {'weight': link})])
 
     def draw(self):
         layout = networkx.spring_layout(self.g)
