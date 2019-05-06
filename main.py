@@ -10,4 +10,4 @@ if __name__ == '__main__':
     network = SemanticNetwork(a.words, di=True, link_threshold=0)
     network.draw()
 
-    print(network.page_rank())
+    network.page_rank()

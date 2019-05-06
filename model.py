@@ -52,7 +52,7 @@ class SemanticNetwork:
 
     link_threshold = 0
 
-    def __init__(self, taged_words, di = False, link_threshold=0):
+    def __init__(self, taged_words, di=False, link_threshold=0):
         self.link_threshold = link_threshold
 
         i = 0
@@ -75,9 +75,9 @@ class SemanticNetwork:
                         self.g.add_edges_from([(i, j, {'weight': link}), (j, i, {'weight': link})])
 
     def draw(self):
-        layout = networkx.spring_layout(self.g)
         plt.figure(1)
-        networkx.draw(self.g, pos=layout, node_color='y')
+        layout = networkx.spring_layout(self.g)
+        networkx.draw(self.g, pos=layout, node_color='y', with_labels=True)
         plt.show()
 
     @staticmethod
@@ -96,11 +96,27 @@ class SemanticNetwork:
         return max_similarity
 
     def page_rank(self):
-        dic = pagerank(self.g, alpha=0.85)
-        sorted_tup = sorted(dic.items(), key=lambda x: x[1], reverse=True)
-        result = {}
+        pr = pagerank(self.g, alpha=0.85)
+        average = sum(pr.values()) / len(pr)
 
-        for record in sorted_tup[0:10]:
-            result[self.node_word_map[record[0]][0]] = record[1]
+        plt.figure(2)
+        layout = networkx.spring_layout(self.g)
+        networkx.draw(self.g, pos=layout, node_size=[300 + (x - average) * 10000 for x in pr.values()], node_color='m',
+                      with_labels=True)
+        plt.show()
 
-        return result
+        pr_sorted_tup = sorted(pr.items(), key=lambda x: x[1], reverse=True)
+        top_ten_tup = pr_sorted_tup[0:10]
+        top = top_ten_tup[0][1]
+        last = top_ten_tup[9][1]
+        diff = top - last
+
+        plt.figure(3)
+        plt.barh(range(10), [record[1] for record in top_ten_tup], height=0.7, color='steelblue', alpha=0.8)
+        plt.yticks(range(10), [self.node_word_map[record[0]][0] for record in top_ten_tup])
+        plt.xlim(top + diff * 0.1, last - diff * 0.1)
+        plt.xlabel("PageRank Value")
+        plt.title("KeyWords")
+        plt.show()
+
+        return dict([(self.node_word_map[record[0]][0], record[1]) for record in top_ten_tup])
