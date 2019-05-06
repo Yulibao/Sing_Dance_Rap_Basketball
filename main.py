@@ -8,8 +8,6 @@ if __name__ == '__main__':
     a.tag()
 
     network = SemanticNetwork(a.words,link_threshold=0)
-    network.draw()
+    #network.draw()
 
-    print('keywords:')
-    for keyword, value in network.page_rank().items():
-        print(keyword,value)
+    print(network.page_rank())
