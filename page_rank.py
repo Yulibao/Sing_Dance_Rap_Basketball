@@ -1,7 +1,7 @@
 import networkx as nx
 
 
-def pagerank(G, weight, alpha=0.85,
+def pagerank(G, weight='weight', alpha=0.85,
              max_iter=1000,
              tol=1.0e-6,
              nstart=None):

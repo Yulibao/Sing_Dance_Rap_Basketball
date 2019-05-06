@@ -8,6 +8,8 @@ from nltk import data
 import networkx
 import matplotlib.pyplot as plt
 
+from page_rank import pagerank
+
 data.path.append('.\\Data')
 
 
@@ -91,7 +93,7 @@ class SemanticNetwork:
         return max_similarity
 
     def page_rank(self):
-        dic = networkx.pagerank(self.g, alpha=0.85)
+        dic = pagerank(self.g, alpha=0.85)
         sorted_tup = sorted(dic.items(), key=lambda x: x[1], reverse=True)
         result = {}
 
