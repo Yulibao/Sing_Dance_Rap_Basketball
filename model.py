@@ -20,7 +20,6 @@ class Article:
 
     def __init__(self, file_name, filter_stop_words=False, filter_repeate=False):
         with open(file_name, 'r') as f:
-            self.filer = filter
             self.text = f.read().lower()
 
         self.filter_button = {"stop_words": filter_stop_words, "repeat": filter_repeate}
@@ -89,21 +88,23 @@ class SemanticNetwork:
 
         for synset1 in synsets1:
             for synset2 in synsets2:
-                temp = synset1.path_similarity(synset2)
+                temp = synset1.wup_similarity(synset2)
                 if temp is not None and temp > max_similarity:
                     max_similarity = temp
 
         return max_similarity
 
-    def page_rank(self):
+    def page_rank(self, draw=False):
         pr = pagerank(self.g, alpha=0.85)
         average = sum(pr.values()) / len(pr)
 
-        plt.figure(2)
-        layout = networkx.spring_layout(self.g)
-        networkx.draw(self.g, pos=layout, node_size=[250 + (x - average) * 15000 for x in pr.values()], node_color='m',
-                      with_labels=True)
-        plt.show()
+        if draw:
+            plt.figure(2)
+            layout = networkx.spring_layout(self.g)
+            networkx.draw(self.g, pos=layout, node_size=[250 + (x - average) * 15000 for x in pr.values()],
+                          node_color='m',
+                          with_labels=True)
+            plt.show()
 
         pr_sorted_tup = sorted(pr.items(), key=lambda x: x[1], reverse=True)
         top_ten_tup = pr_sorted_tup[0:10]
