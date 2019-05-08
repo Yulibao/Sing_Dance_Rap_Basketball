@@ -77,7 +77,7 @@ class SemanticNetwork:
     def draw(self):
         plt.figure(1)
         layout = networkx.spring_layout(self.g)
-        networkx.draw(self.g, pos=layout, node_color='y', with_labels=True)
+        networkx.draw(self.g, pos=layout, node_color='g', with_labels=True)
         plt.show()
 
     @staticmethod
@@ -101,7 +101,7 @@ class SemanticNetwork:
 
         plt.figure(2)
         layout = networkx.spring_layout(self.g)
-        networkx.draw(self.g, pos=layout, node_size=[300 + (x - average) * 10000 for x in pr.values()], node_color='m',
+        networkx.draw(self.g, pos=layout, node_size=[250 + (x - average) * 15000 for x in pr.values()], node_color='m',
                       with_labels=True)
         plt.show()
 

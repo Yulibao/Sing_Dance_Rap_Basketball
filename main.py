@@ -7,7 +7,7 @@ if __name__ == '__main__':
     a.lemmatize()
     a.tag()
 
-    network = SemanticNetwork(a.words, di=True, link_threshold=0)
+    network = SemanticNetwork(a.words, link_threshold=0)
     network.draw()
 
     network.page_rank()
