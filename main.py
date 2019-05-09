@@ -7,7 +7,11 @@ if __name__ == '__main__':
     a.lemmatize()
     a.tag()
 
-    network = SemanticNetwork(a.words, link_threshold=0)
-    #network.draw()
+    network_un = SemanticNetwork(a.words, di=False, link_threshold=0)
+    network_di = SemanticNetwork(a.words, di=True, link_threshold=0)
 
-    network.page_rank()
+    # network_un.draw()
+    # network_di.draw()
+
+    network_un.page_rank(title="Undirected graph", fig=(2, 3))
+    network_di.page_rank(title="Directed graph", fig=(4, 5))
