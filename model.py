@@ -8,6 +8,8 @@ from nltk import data
 import networkx
 import matplotlib.pyplot as plt
 
+from tqdm import tqdm
+
 from page_rank import pagerank
 
 data.path.append('.\\Data')
@@ -63,7 +65,9 @@ class SemanticNetwork:
                 i += 1
 
         n = len(self.node_word_map)
-        for i in range(n - 1):
+        print("Total %d nodes" % n)
+        print("Constructing SemanticNetwork.........")
+        for i in tqdm(range(n - 1)):
             for j in range(i + 1, n):
                 link = SemanticNetwork.get_semantic_link(self.node_word_map[i][0], self.node_word_map[j][0])
 
@@ -107,7 +111,17 @@ class SemanticNetwork:
             plt.show()
 
         pr_sorted_tup = sorted(pr.items(), key=lambda x: x[1], reverse=True)
-        top_ten_tup = pr_sorted_tup[0:10]
+        top_ten_tup = []
+        top_ten_words = []
+        for tup in pr_sorted_tup:
+            word = self.node_word_map[tup[0]][0]
+            if word in top_ten_words:
+                continue
+            top_ten_words.append(word)
+            top_ten_tup.append(tup)
+            if len(top_ten_words) == 10:
+                break
+
         top = top_ten_tup[0][1]
         last = top_ten_tup[9][1]
         diff = top - last
